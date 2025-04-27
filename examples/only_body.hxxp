@@ -1,0 +1,2 @@
+#! hxxp -b
+GET http://example.com/ HTTP/1.1

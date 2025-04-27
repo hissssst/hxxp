@@ -1,0 +1,4 @@
+#! hxxp
+GET http://$(echo example.com)/ HTTP/1.1
+Authorization: Bearer ${TOKEN}
+User: $USER

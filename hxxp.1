@@ -1,0 +1,56 @@
+.\" Manpage for hxxp.
+.\" Contact https://github.com/hissssst to correct errors or typos.
+.TH hxxp 1 "30 April 2025" "1.0" "User Commands"
+.SH NAME
+hxxp \- extended HTTP runner
+.SH DESCRIPTION
+hxxp is a UNIX-style command-line tool for executing extended HTTP requests.
+.SH SYNOPSIS
+hxxp [FILENAME] [-h | --help] [-v | --verbose] [-s | --status] [-b | --body] [--version]
+.SH USAGE
+First you need to write the .hxxp request file. The syntax is described in SYNTAX. Second, you need to execute it.
+
+Example:
+.nf
+hxxp request.hxxp
+.fi
+
+.SH HXXP FILE FORMAT
+
+The .hxxp file syntax is pretty similar to vanilla http with a couple of simple differences.
+
+1. hxxp works with \`\\n\`, you don't need to make sure that every line ends with \`\\r\\n\`
+
+2. You need to specify the full URL and query instead of just path. Query must be urlencoded.
+To achieve it you can use supplementary \`urlencode\` program.
+
+3. hxxp supports shell interpolations
+
+4. hxxp will automatically add missing headers. To remove them, you just need to specify them without value.
+For example: \`Accept:\`
+
+5. hxxp supports all HTTP protocols: from 1.0 to 3
+
+.SH HXXP FILE EXAMPLE
+
+#!/usr/bin/env hxxp
+.nf
+GET https://${DOMAIN}/echo?query=$(urlencode "Hello World") HTTP/1.1
+.fi
+.nf
+Header: 1234
+.fi
+.nf
+
+.fi
+.ni
+$(cat body.json | jq)
+.fi
+
+
+.SH SEE ALSO
+grep(1), git(1), bash(1), curl(1)
+.SH BUGS
+No known bugs.
+.SH AUTHOR
+Hissssst (https://github.com/hissssst)
