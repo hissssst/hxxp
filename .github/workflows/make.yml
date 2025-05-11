@@ -1,0 +1,18 @@
+name: Make
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Install deps
+      run: |
+        sudo apt update
+        sudo apt install -y gcc libcurl4-openssl-dev make
+    - run: make all
