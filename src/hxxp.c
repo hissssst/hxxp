@@ -25,6 +25,7 @@ void usage(FILE *out, const char *name) {
           " -h, --help            display this help and exit.\n"
           " -b, --body            output only body of the returned request.\n"
           " -s, --status          output only status code of the returned request.\n"
+          " -v, --verbose         output verbose information about request and response.\n"
           "     --version         display version and exit.\n", out);
 }
 
